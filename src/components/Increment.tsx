@@ -4,20 +4,22 @@ import { doc, collection, addDoc, setDoc, updateDoc, serverTimestamp, increment 
 
 
 interface IncrementProps {
-    reachedLimit: boolean
+    disabled: boolean
+    roomId: string
 }
 
-const Increment = ({reachedLimit}: IncrementProps) => {
+const Increment = ({disabled, roomId}: IncrementProps) => {
     function handleClick ()  {
-        setDoc(doc(db, "prets", "pret1"), {
+        setDoc(doc(db, "prets", roomId), {
             lastPret: serverTimestamp(),
-            numPrets: increment(1)
+            numPrets: increment(1),
+            reserved: false
         }, {merge: true}).catch((e) => {console.log(`Error: ${e}`)});
     }
 
     return (
         <div>
-            <button onClick={handleClick} disabled={reachedLimit}>I've had a Pret</button>
+            <button className={"btn-primary"} onClick={handleClick} disabled={disabled}>I've had a Pret</button>
         </div>
         )
 }

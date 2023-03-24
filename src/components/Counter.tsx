@@ -5,7 +5,9 @@ interface CounterProps {
 }
 
 const Counter = ({numPrets}: CounterProps) => {
-    return <div>You've had {numPrets} prets today</div>
+    return (<div className={"m-3"}>
+        You've had <strong>{numPrets}</strong> prets today
+    </div>)
 }
 
 export default Counter
