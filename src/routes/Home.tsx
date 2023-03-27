@@ -4,6 +4,7 @@ import room from "./Room";
 import {Link, useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {HomeTitle} from "../components/HomeTitle";
+import InfoPopup from "../components/InfoPopup";
 
 export default function Home() {
 
@@ -61,6 +62,7 @@ export default function Home() {
           </form>
           <p>or</p>
           <button className="btn-primary" onClick={makeNewRoom}>Create New Room</button>
+          <InfoPopup/>
       </div>
   );
 }
